@@ -34,7 +34,7 @@ This only seems to happen:
  * On errors inside the component `<template>`.
  * If the reporting 3rd party widget is initialized.
  * On route components. Trying to do this on the root `App.vue` component will not trigger the recursion. It will also not trigger on a direct child component of the root `App.vue` component.
-* Using Vite's HMR. The issue will no happen on page reload/refresh. Trying to replicate with webpack and HMR wasn't successful. 
+* Using Vite's HMR. The issue will no happen on page reload/refresh. Trying to replicate with webpack and HMR wasn't successful. This widget was used with Vue and Vue router on other projects that did not use Vite and the issue never occurred. 
 
 There are 3 different repeating warnings being printed in random capacity: 
 * `Property "__obj_id" was accessed during render but is not defined on instance.` 
