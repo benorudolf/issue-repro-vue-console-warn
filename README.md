@@ -30,21 +30,24 @@ If the replication was successful you should see console warnings being created 
 
 # Current findings
 
-* This only seems to happen:
-    * On errors inside the component `<template>`.
-    * If the reporting 3rd party widget is initialized.
-    * On route components. Trying to do this on the root `App.vue` component will not trigger the recursion. It will also not trigger on a direct child component of the root `App.vue` component.
-    * Using Vite's HMR. The issue will no happen on page reload/refresh. Trying to replicate with webpack and HMR wasn't successful. 
-* There are 3 different repeating warnings being printed in random capacity: 
-    * `Property "__obj_id" was accessed during render but is not defined on instance.` 
-    * `[Vue warn]: Avoid app logic that relies on enumerating keys on a component instance. The keys will be empty in production mode to avoid performance overhead.` 
-    * `[Vue warn]: Property "hasOwnProperty" was accessed during render but is not defined on instance.` 
-    * The first warning (`Property "__obj_id"...`) seems to only appear in the beginning then it doesn't occur anymore. 
-* This is a minimal reproduction version. In the original project there were cases where the recursion would stop at some point or be very brief. 
-* The console warnings appear after the error or warning. As mentioned in the previous point; in cases where the recursion stopped, the error log would be the last thing printed.  
+This only seems to happen:
+ * On errors inside the component `<template>`.
+ * If the reporting 3rd party widget is initialized.
+ * On route components. Trying to do this on the root `App.vue` component will not trigger the recursion. It will also not trigger on a direct child component of the root `App.vue` component.
+* Using Vite's HMR. The issue will no happen on page reload/refresh. Trying to replicate with webpack and HMR wasn't successful. 
+
+There are 3 different repeating warnings being printed in random capacity: 
+* `Property "__obj_id" was accessed during render but is not defined on instance.` 
+* `[Vue warn]: Avoid app logic that relies on enumerating keys on a component instance. The keys will be empty in production mode to avoid performance overhead.` 
+* `[Vue warn]: Property "hasOwnProperty" was accessed during render but is not defined on instance.` 
+* The first warning (`Property "__obj_id"...`) seems to only appear in the beginning then it doesn't occur anymore. 
+
+This is a minimal reproduction version. In the original project there were cases where the recursion would stop at some point or be very brief. 
+
+The console warnings appear after the error or warning. As mentioned in the previous point; in cases where the recursion stopped, the error log would be the last thing printed.  
 
 # Environment 
 
-OS: MacOS BigSur 11.6 (20G165)
-Browser: Brave 1.41.100 Chromium: 103.0.5060.134 (Official Build) (x86_64)
-Node: v16.14.0
+OS: MacOS BigSur 11.6 (20G165)  
+Browser: Brave 1.41.100 Chromium: 103.0.5060.134 (Official Build) (x86_64)  
+Node: v16.14.0  
