@@ -5,7 +5,7 @@ This is a demo app for triggering a Vue 3 console.warn recursion/infinite loop i
 
 **Clone the repo:**
 ```
-$ git clone 
+$ git clone git@github.com:benorudolf/issue-repro-vue-console-warn.git
 ```
 
 **Install dependencies:**
